@@ -19,7 +19,7 @@ export class Server {
         this.app.use(cors())
 
         if (process.env.NODE_ENV === 'production') {
-            this.app.use(express.static(path.resolve("./" + "build/client")))
+            this.app.use(express.static(path.resolve("./" + "build/client/build")))
 
             this.app.get(/.*/, (req: Request, res: Response): void => {
                 res.sendFile(path.resolve("./" + "build/client/build/index.html"))
