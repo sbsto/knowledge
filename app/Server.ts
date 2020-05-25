@@ -18,6 +18,11 @@ export class Server {
         this.app.use(express.json())
         this.app.use(cors())
 
+        // routers will go here
+        this.app.get("/api", (req: Request, res: Response): void => {
+            res.send("You have reached the API!");
+        })
+
         if (process.env.NODE_ENV === 'production') {
             this.app.use(express.static(path.resolve("./" + "build/client/build")))
 
@@ -25,11 +30,6 @@ export class Server {
                 res.sendFile(path.resolve("./" + "build/client/build/index.html"))
             })
         }
-
-        this.app.get("/api", (req: Request, res: Response): void => {
-            res.send("You have reached the API!");
-        })
-
 
     }
 
