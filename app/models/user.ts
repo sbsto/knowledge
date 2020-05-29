@@ -2,15 +2,32 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import Doc from './doc'
+import Doc, { IDoc } from './Doc'
 
-export interface IUser extends mongoose.Document {
+interface IToken {
+    _id: mongoose.Types.ObjectId;
+    token: string;
+}
+
+interface IUserSchema extends mongoose.Document {
     name: string;
     email: string;
     age?: number;
     password: string;
-    tokens: string[];
+    tokens: IToken[];
 };
+
+// for methods
+export interface IUser extends IUserSchema {
+    getDocs(): IDoc[];
+    generateAuthToken(): string;
+    toJSON(): any;
+}
+
+// for statics
+interface IUserModel extends mongoose.Model<IUser> {
+    findByCredentials(email: string, password: string): IUser;
+}
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -24,7 +41,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         lowercase: true,
-        validate(value) {
+        validate(value: string) {
             if (!validator.isEmail(value)) {
                 throw new Error('Invalid email')
             }
@@ -34,7 +51,7 @@ const userSchema = new mongoose.Schema({
     age: {
         type: Number,
         default: 0,
-        validate(value) {
+        validate(value: number) {
             if (value < 0) {
                 throw new Error('Age must be positive')
             }
@@ -46,7 +63,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 7,
-        validate(value) {
+        validate(value: string) {
             if (value.toLowerCase().includes('password')) {
                 throw new Error('Password cannot contain "password".')
             }
@@ -73,7 +90,7 @@ userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({
         _id: user._id.toString()
-    }, process.env.JWT_SECRET, {
+    }, process.env.JWT_SECRET || '', {
         expiresIn: '72h'
     })
 
@@ -96,7 +113,15 @@ userSchema.methods.toJSON = function () {
     return userObject
 }
 
-userSchema.statics.findByCredentials = async (email, password) => {
+userSchema.methods.getDocs = async function () {
+    const user = this
+    const docs = await user.populate({
+        path: 'docs'
+    }).execPopulate()
+    return docs
+}
+
+userSchema.statics.findByCredentials = async (email: string, password: string) => {
     const user = await User.findOne({
         email
     })
@@ -130,5 +155,7 @@ userSchema.pre('remove', async function (next) {
     next()
 })
 
-const User = mongoose.model<IUser>('User', userSchema);
+// this is saying that INSTANCES of User have type IUser, 
+// but User has type IUserModel.
+const User = mongoose.model<IUser, IUserModel>('User', userSchema);
 export default User;

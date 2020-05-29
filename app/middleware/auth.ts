@@ -1,10 +1,16 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/user'
+import User, { IUser } from '../models/User'
+import { Request, NextFunction } from 'express'
 
-const auth = async (req, res, next) => {
+export interface AuthRequest extends Request {
+    user: IUser;
+    token: string;
+}
+
+const auth = async (req: any, res: any, next: NextFunction) => {
     try {
-        const token = req.header('Authorization').replace('Bearer ', '')
-        const decoded: any = jwt.verify(token, process.env.JWT_SECRET)
+        const token = req.header('Authorization')!.replace('Bearer ', '')
+        const decoded: any = jwt.verify(token, process.env.JWT_SECRET!)
         const user = await User.findOne({
             _id: decoded._id,
             'tokens.token': token
