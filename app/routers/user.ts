@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import User, { IUserProps, IUser } from '../models/User'
+import User, { IUser } from '../models/User'
 import auth, { AuthRequest } from '../middleware/auth'
 
 const router = express.Router()
@@ -62,28 +62,23 @@ router.get('/api/users/me', auth, async (req: Request, res: Response) => {
     res.send(authReq.user)
 })
 
-function isValidProp(user: IUser, prop: string): prop is keyof IUserProps {
-    return prop in Object.keys(user)
-}
-
-function updateUser(req: AuthRequest, property: string): void {
-    if (isValidProp(req.user, property) && property != "age") {
-        req.user[property] = req.body[property]
-    } else if (property == "age") {
-        req.user[property] = req.body[property]
-    }
-}
-
 router.patch('/api/users/me', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const updates = Object.keys(authReq.body)
+    const validUpdates = ['name', 'email', 'age', 'password']
+    const isValidOperation = updates.every((update) => validUpdates.includes(update))
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates.' })
+    }
 
     try {
-        updates.forEach((update) => updateUser(authReq, update))
-        await authReq.user.save()
-        res.send(authReq.user)
+        const updatedUser = await User.findByIdAndUpdate(authReq.user._id, authReq.body, { new: true, runValidators: true })
+        if (!updatedUser) {
+            throw new Error('No user found.')
+        }
+        res.send(updatedUser)
     } catch (e) {
-        console.log(e)
         res.status(400).send(e)
     }
 })

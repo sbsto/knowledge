@@ -52,8 +52,8 @@ router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
 router.patch('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const updates = Object.keys(authReq.body)
-    const allowedUpdates = ['title', 'body']
-    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+    const validUpdates = ['title', 'body']
+    const isValidOperation = updates.every((update) => validUpdates.includes(update))
 
     if (!isValidOperation) {
         return res.status(400).send({
@@ -62,17 +62,14 @@ router.patch('/api/docs/:id', auth, async (req: Request, res: Response) => {
     }
 
     try {
-        var doc = await Doc.findOne({
+        const updatedDoc = await Doc.findOneAndUpdate({
             _id: authReq.params.id,
             owner: authReq.user._id
-        })
-
-        if (!doc) {
+        }, authReq.body, { new: true, runValidators: true })
+        if (!updatedDoc) {
             return res.status(404).send()
         }
-        updates.forEach(update => doc![update] = authReq.body[update])
-        await doc!.save()
-        res.send(doc)
+        res.send(updatedDoc)
     } catch (e) {
         res.status(400).send(e)
     }

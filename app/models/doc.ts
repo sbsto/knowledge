@@ -5,7 +5,6 @@ export interface IDoc extends mongoose.Document {
     body: string;
     tags: string[];
     owner: mongoose.Schema.Types.ObjectId;
-    [key: string]: any;
 };
 
 const docSchema = new mongoose.Schema({
