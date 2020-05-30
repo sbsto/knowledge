@@ -9,13 +9,15 @@ interface IToken {
     token: string;
 }
 
-interface IUserSchema extends mongoose.Document {
+export interface IUserProps {
     name: string;
     email: string;
     age?: number;
     password: string;
+}
+
+interface IUserSchema extends mongoose.Document, IUserProps {
     tokens: IToken[];
-    [key: string]: any;
 };
 
 // for methods
