@@ -1,5 +1,8 @@
 import express = require('express')
 import cors = require('cors')
+import docRouter from './routers/doc'
+import userRouter from './routers/user'
+import './db/mongoose'
 
 import { Express, Request, Response } from "express";
 
@@ -12,6 +15,8 @@ export class Server {
 
         this.app.use(express.json())
         this.app.use(cors())
+        this.app.use(docRouter)
+        this.app.use(userRouter)
 
         // routers will go here
         this.app.get("/api", (req: Request, res: Response): void => {
