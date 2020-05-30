@@ -74,11 +74,11 @@ router.patch('/api/users/me', auth, async (req: Request, res: Response) => {
         })
     }
     try {
-        authReq.user = { ...authReq.user, ...authReq.body }
+        updates.forEach((update) => authReq.user[update] = authReq.body[update])
         await authReq.user.save()
-
         res.send(authReq.user)
     } catch (e) {
+        console.log(e)
         res.status(400).send(e)
     }
 })

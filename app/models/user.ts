@@ -15,6 +15,7 @@ interface IUserSchema extends mongoose.Document {
     age?: number;
     password: string;
     tokens: IToken[];
+    [key: string]: any;
 };
 
 // for methods
@@ -90,7 +91,7 @@ userSchema.methods.generateAuthToken = async function () {
     const user = this
     const token = jwt.sign({
         _id: user._id.toString()
-    }, process.env.JWT_SECRET || '', {
+    }, process.env.JWT_SECRET!, {
         expiresIn: '72h'
     })
 
@@ -115,10 +116,10 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.getDocs = async function () {
     const user = this
-    const docs = await user.populate({
+    await user.populate({
         path: 'docs'
     }).execPopulate()
-    return docs
+    return user.docs
 }
 
 userSchema.statics.findByCredentials = async (email: string, password: string) => {

@@ -5,6 +5,7 @@ export interface IDoc extends mongoose.Document {
     body: string;
     tags: string[];
     owner: mongoose.Schema.Types.ObjectId;
+    [key: string]: any;
 };
 
 const docSchema = new mongoose.Schema({
@@ -19,7 +20,7 @@ const docSchema = new mongoose.Schema({
         required: true
     },
     owner: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         required: true,
         ref: 'User'
     },

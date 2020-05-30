@@ -25,14 +25,13 @@ router.get('/api/docs/list', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     try {
         const docs = await authReq.user.getDocs()
-        console.log(docs)
-        res.send(authReq.user.getDocs())
+        res.send(docs)
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.get('/api/tasks/:id', auth, async (req: Request, res: Response) => {
+router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const _id = authReq.params.id
     try {
@@ -50,10 +49,10 @@ router.get('/api/tasks/:id', auth, async (req: Request, res: Response) => {
     }
 })
 
-router.patch('/api/tasks/:id', auth, async (req: Request, res: Response) => {
+router.patch('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const updates = Object.keys(authReq.body)
-    const allowedUpdates = ['body']
+    const allowedUpdates = ['title', 'body']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
@@ -71,7 +70,7 @@ router.patch('/api/tasks/:id', auth, async (req: Request, res: Response) => {
         if (!doc) {
             return res.status(404).send()
         }
-        doc = { ...doc, ...authReq.body }
+        updates.forEach(update => doc![update] = authReq.body[update])
         await doc!.save()
         res.send(doc)
     } catch (e) {
@@ -79,7 +78,7 @@ router.patch('/api/tasks/:id', auth, async (req: Request, res: Response) => {
     }
 })
 
-router.delete('/api/tasks/:id', auth, async (req: Request, res: Response) => {
+router.delete('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     try {
         const doc = await Doc.findOneAndDelete({
