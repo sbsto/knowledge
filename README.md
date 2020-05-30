@@ -12,10 +12,6 @@ To setup MongoDB, follow this guide: https://docs.mongodb.com/manual/installatio
 
 In terminal, run: 
 
-`cd`
-
-then 
-
 `[PATH_TO_DIRECTORY_WHERE_MONGODB_FOLDER_LIVES]/mongodb/bin/mongod --dbpath=/Users/[NAME]/[PATH_TO_DIRECTORY_WHERE_MONGODB_FOLDER_LIVES]/mongodb-data`
 
 The above command actually starts your database. For example, since my mongodb folder is in the Documents directory of my computer, to start my MongoDB, I run: 

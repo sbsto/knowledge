@@ -7,13 +7,13 @@ const router = express.Router()
 
 router.post('/api/docs/create', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
-    const task = new Doc({
+    const doc = new Doc({
         ...authReq.body,
         owner: authReq.user._id
     })
     try {
-        await task.save()
-        res.status(201).send(task)
+        await doc.save()
+        res.status(201).send(doc)
 
     } catch (e) {
         res.status(400).send(e)
@@ -35,15 +35,15 @@ router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const _id = authReq.params.id
     try {
-        const task = await Doc.findOne({
+        const doc = await Doc.findOne({
             _id,
             owner: authReq.user._id
         })
 
-        if (!task) {
+        if (!doc) {
             return res.status(404).send()
         }
-        res.send(task)
+        res.send(doc)
     } catch (e) {
         res.status(500).send()
     }
