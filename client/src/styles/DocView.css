@@ -2,18 +2,24 @@
     width: 55%;
     height: 80vh;
     background-color: white;
-    padding-left: 60px;
-    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
     color: #333333;
     border: 0.5px solid #dddddd;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
 }
 
 .DocView-title {
-    width: 60%;
+    width: 100%;
     border: 0px;
     font-size: 24px;
     font-weight: 500;
     color: #333333;
+    background-color: whitesmoke;
+    padding: 10px
 }
 
 .DocView-title:focus {
