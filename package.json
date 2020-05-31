@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/index.js",
     "dev": "env-cmd -f ./config/dev.env npx ts-node index.ts",
-    "build-prod": "npx tsc"
+    "build": "npx tsc"
   },
   "author": "",
   "license": "ISC",
