@@ -6,3 +6,5 @@ mongoose.connect(process.env.MONGODB_URL!, {
     useCreateIndex: true,
     useFindAndModify: false
 })
+
+console.log("mongoose connection is: ", mongoose.connection.readyState);
