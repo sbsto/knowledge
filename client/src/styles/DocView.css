@@ -1,0 +1,21 @@
+.DocView {
+    width: 55%;
+    height: 80vh;
+    background-color: white;
+    padding-left: 60px;
+    padding-top: 40px;
+    color: #333333;
+    border: 0.5px solid #dddddd;
+}
+
+.DocView-title {
+    width: 60%;
+    border: 0px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.DocView-title:focus {
+    outline: none;
+}
