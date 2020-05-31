@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import User, { IUser } from '../models/User'
+import { User, IToken } from '../models'
 import auth, { AuthRequest } from '../middleware/auth'
 
 const router = express.Router()
@@ -36,7 +36,7 @@ router.post('/api/users/login', async (req: Request, res: Response) => {
 router.post('/api/users/logout', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     try {
-        authReq.user.tokens = authReq.user.tokens.filter((token) => token.token !== authReq.token)
+        authReq.user.tokens = authReq.user.tokens.filter((token: IToken) => token.token !== authReq.token)
         await authReq.user.save()
 
         res.send()

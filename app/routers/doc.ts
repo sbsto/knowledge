@@ -1,5 +1,5 @@
 import express from 'express'
-import Doc from '../models/Doc'
+import { Doc } from '../models'
 import auth, { AuthRequest } from '../middleware/auth'
 import { Request, Response } from 'express'
 

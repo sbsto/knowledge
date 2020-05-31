@@ -2,9 +2,9 @@ import mongoose from 'mongoose'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import Doc, { IDoc } from './Doc'
+import { Doc, IDoc } from './'
 
-interface IToken {
+export interface IToken {
     _id: mongoose.Types.ObjectId;
     token: string;
 }
