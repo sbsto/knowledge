@@ -14,20 +14,23 @@ function DocView() {
     const fullBody = state.body.map((paragraph, index) => {
         return (
             <DocBody
+                key={index}
                 bodyText={state.body[index]}
                 onChange={
                     value => setState(() => {
-                        state.body[index] = value
+                        const newState = state
+                        newState.body[index] = value
                         return {
-                            ...state
+                            ...newState
                         }
                     })
                 }
                 onEnter={
                     () => setState(() => {
-                        state.body.splice(index + 1, 0, '')
+                        const newState = state
+                        newState.body.splice(index + 1, 0, '')
                         return {
-                            ...state
+                            ...newState
                         }
                     })
                 }

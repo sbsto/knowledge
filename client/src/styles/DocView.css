@@ -1,12 +1,11 @@
 .DocView {
     width: 55%;
-    height: 80vh;
     background-color: white;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 30px;
     color: #333333;
-    border: 0.5px solid #dddddd;
+    /* border: 0.5px solid #dddddd; */
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;
