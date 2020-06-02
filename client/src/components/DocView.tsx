@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/DocView.css'
 import DocBody from './DocBody'
-import { stat } from 'fs'
 
 function DocView() {
     const [state, setState] = useState(
@@ -16,23 +15,19 @@ function DocView() {
             <DocBody
                 key={index}
                 bodyText={state.body[index]}
-                onChange={
-                    value => setState(() => {
-                        const newState = state
-                        newState.body[index] = value
-                        return {
-                            ...newState
-                        }
+                onChange={(value) => {
+                    const newState = { ...state }
+                    newState.body[index] = value
+                    setState({
+                        ...newState
                     })
-                }
+                }}
                 onEnter={
-                    () => setState(() => {
-                        const newState = state
+                    () => {
+                        const newState = { ...state }
                         newState.body.splice(index + 1, 0, '')
-                        return {
-                            ...newState
-                        }
-                    })
+                        setState({ ...newState })
+                    }
                 }
             />
         )
