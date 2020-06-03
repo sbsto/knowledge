@@ -17,7 +17,6 @@ function DocView() {
                 bodyText={state.body[index]}
                 onChange={
                     (value) => {
-                        console.log(value.includes('\n'))
                         const newState = { ...state }
                         newState.body[index] = value
                         setState({
