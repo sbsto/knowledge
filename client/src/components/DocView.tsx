@@ -15,17 +15,28 @@ function DocView() {
             <DocBody
                 key={index}
                 bodyText={state.body[index]}
-                onChange={(value) => {
-                    const newState = { ...state }
-                    newState.body[index] = value
-                    setState({
-                        ...newState
-                    })
-                }}
+                onChange={
+                    (value) => {
+                        console.log(value.includes('\n'))
+                        const newState = { ...state }
+                        newState.body[index] = value
+                        setState({
+                            ...newState
+                        })
+                    }}
                 onEnter={
                     () => {
                         const newState = { ...state }
                         newState.body.splice(index + 1, 0, '')
+                        setState({ ...newState })
+                    }
+                }
+                onBackspace={
+                    () => {
+                        const newState = { ...state }
+                        if (paragraph.length === 0) {
+                            newState.body.splice(index, 1)
+                        }
                         setState({ ...newState })
                     }
                 }
