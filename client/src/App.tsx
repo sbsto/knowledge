@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import DocView from './components/DocView'
+import { DocView } from './components/'
 
 function App() {
   return (

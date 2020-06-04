@@ -13,9 +13,7 @@ function DocBody(props: DocBodyProps) {
     const keyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === "Enter") {
             props.onEnter()
-        }
-
-        if (event.key === "Backspace") {
+        } else if (event.key === "Backspace") {
             props.onBackspace()
         }
     }

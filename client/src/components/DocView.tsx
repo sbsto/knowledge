@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import '../styles/DocView.css'
-import DocBody from './DocBody'
+import { DocBody } from './'
 
 function DocView() {
     const [state, setState] = useState(
         {
             title: '',
-            body: ['THIS IS PARA 1', 'THIS IS PARA 2']
+            body: ['']
         }
     )
 
