@@ -1,4 +1,5 @@
 import React from 'react'
+import TextareaAutosize from 'react-textarea-autosize'
 import '../styles/DocBody.css'
 
 interface DocBodyProps {
@@ -20,14 +21,14 @@ function DocBody(props: DocBodyProps) {
 
     return (
         <div className="DocBody">
-            <textarea
+            <TextareaAutosize
                 className="DocBody-textbox"
                 rows={2}
                 placeholder="start writing here..."
                 value={props.bodyText}
                 onChange={event => props.onChange(event.target.value)}
                 onKeyDown={keyPressed}
-            ></textarea>
+            />
         </div>
     )
 }
