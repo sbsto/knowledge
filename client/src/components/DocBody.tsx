@@ -1,5 +1,5 @@
 import React from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
+import { TextareaAutosize } from '@material-ui/core'
 import '../styles/DocBody.css'
 
 interface DocBodyProps {
