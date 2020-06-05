@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextareaAutosize } from '@material-ui/core'
+import { Grid, TextareaAutosize } from '@material-ui/core'
 import '../styles/DocView.css'
 import { DocBody } from './'
 
@@ -45,7 +45,7 @@ function DocView() {
     })
 
     return (
-        <div className="DocView">
+        <Grid className="DocView">
             <TextareaAutosize
                 className="DocView-title"
                 placeholder="title"
@@ -56,7 +56,7 @@ function DocView() {
                 })}
             />
             {fullBody}
-        </div>
+        </Grid>
     )
 }
 

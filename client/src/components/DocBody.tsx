@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextareaAutosize } from '@material-ui/core'
+import { Container, TextareaAutosize } from '@material-ui/core'
 import '../styles/DocBody.css'
 
 interface DocBodyProps {
@@ -21,16 +21,14 @@ function DocBody(props: DocBodyProps) {
     }
 
     return (
-        <div className="DocBody">
-            <TextareaAutosize
-                className="DocBody-textbox"
-                placeholder="start writing here..."
-                value={props.bodyText}
-                onChange={event => props.onChange(event.target.value)}
-                onKeyDown={keyPressed}
-                autoFocus
-            />
-        </div>
+        <TextareaAutosize
+            className="DocBody-textbox"
+            placeholder="start writing here..."
+            value={props.bodyText}
+            onChange={event => props.onChange(event.target.value)}
+            onKeyDown={keyPressed}
+            autoFocus
+        />
     )
 }
 
