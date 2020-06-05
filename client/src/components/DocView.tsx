@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { TextareaAutosize } from '@material-ui/core'
 import '../styles/DocView.css'
 import { DocBody } from './'
 
@@ -45,9 +46,8 @@ function DocView() {
 
     return (
         <div className="DocView">
-            <input
+            <TextareaAutosize
                 className="DocView-title"
-                type="text"
                 placeholder="title"
                 value={state.title}
                 onChange={event => setState({
