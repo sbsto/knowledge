@@ -23,7 +23,6 @@ function DocBody(props: DocBodyProps) {
         <div className="DocBody">
             <TextareaAutosize
                 className="DocBody-textbox"
-                rows={2}
                 placeholder="start writing here..."
                 value={props.bodyText}
                 onChange={event => props.onChange(event.target.value)}
