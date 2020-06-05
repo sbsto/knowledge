@@ -12,7 +12,8 @@ interface DocBodyProps {
 function DocBody(props: DocBodyProps) {
 
     const keyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault()
             props.onEnter()
         } else if (event.key === "Backspace") {
             props.onBackspace()
@@ -27,6 +28,7 @@ function DocBody(props: DocBodyProps) {
                 value={props.bodyText}
                 onChange={event => props.onChange(event.target.value)}
                 onKeyDown={keyPressed}
+                autoFocus
             />
         </div>
     )
