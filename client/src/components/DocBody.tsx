@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, TextareaAutosize } from '@material-ui/core'
-import '../styles/DocBody.css'
+import { Grid, TextareaAutosize } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 interface DocBodyProps {
     bodyText: string;
@@ -9,7 +9,19 @@ interface DocBodyProps {
     onBackspace(): void;
 }
 
+const useStyles = makeStyles({
+    paragraphStyle: {
+        border: "0px",
+        fontSize: "20px",
+        backgroundColor: "whitesmoke",
+        resize: "none",
+        outline: "none",
+        width: "100%"
+    }
+})
+
 function DocBody(props: DocBodyProps) {
+    const classes = useStyles()
 
     const keyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === "Enter" && !event.shiftKey) {
@@ -21,14 +33,16 @@ function DocBody(props: DocBodyProps) {
     }
 
     return (
-        <TextareaAutosize
-            className="DocBody-textbox"
-            placeholder="start writing here..."
-            value={props.bodyText}
-            onChange={event => props.onChange(event.target.value)}
-            onKeyDown={keyPressed}
-            autoFocus
-        />
+        <Grid item>
+            <TextareaAutosize
+                className={classes.paragraphStyle}
+                placeholder="start writing here..."
+                value={props.bodyText}
+                onChange={event => props.onChange(event.target.value)}
+                onKeyDown={keyPressed}
+                autoFocus
+            />
+        </Grid>
     )
 }
 
