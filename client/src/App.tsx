@@ -1,24 +1,22 @@
 import React from 'react';
-import { Container, Grid } from '@material-ui/core'
-import './styles/App.css';
-import { DocView } from './components/'
+import { Container, Grid, Typography } from '@material-ui/core'
+import { DocView, DocNav } from './components/'
 
 function App() {
   return (
-    <Container className="App" maxWidth="md">
+    <Container className="App" maxWidth="lg">
       {/* Instead of the below, we will have a funcitonal header component.
           This is just a placeholder. I think the material-ui "App Bar" component
           could look really nice here.
       */}
-      <Grid className="header">
-        <h1>home</h1>
-      </Grid>
-      <Grid>
-        <DocView />
+      <Typography variant="h1">home</Typography>
+      <Grid container spacing={6}>
         {/* here, we'll have 2 components: 
           one for navigation between docs (left)
           one for viewing the doc and editing it.
          */}
+        <DocNav />
+        <DocView />
       </Grid>
     </Container>
   );
