@@ -46,12 +46,10 @@ function DocView() {
                         setState({ ...newState })
                     }
                 }
-                onBackspace={
+                deleteParagraph={
                     () => {
                         const newState = { ...state }
-                        if (paragraph.length === 0) {
-                            newState.body.splice(index, 1)
-                        }
+                        newState.body.splice(index, 1)
                         setState({ ...newState })
                     }
                 }

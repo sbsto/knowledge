@@ -6,7 +6,7 @@ interface DocBodyProps {
     bodyText: string;
     onChange(value: string): void;
     onEnter(): void;
-    onBackspace(): void;
+    deleteParagraph(): void;
 }
 
 const useStyles = makeStyles({
@@ -27,8 +27,9 @@ function DocBody(props: DocBodyProps) {
         if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault()
             props.onEnter()
-        } else if (event.key === "Backspace") {
-            props.onBackspace()
+        } else if (event.key === "Backspace" && props.bodyText.length === 0) {
+            event.preventDefault()
+            props.deleteParagraph()
         }
     }
 
