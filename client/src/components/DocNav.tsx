@@ -27,7 +27,9 @@ const StyledButton = withStyles((theme: Theme) =>
 )((props: ButtonProps) => <Button {...props} />)
 
 interface DocNavProps {
-    titles: String[]
+    titles: String[];
+    onSelect(index: number): void;
+    onAddDoc(): void
 }
 
 function DocNav(props: DocNavProps) {
@@ -38,6 +40,7 @@ function DocNav(props: DocNavProps) {
                 nodeId={String(index)}
                 label={title}
                 icon={<Description />}
+                onClick={() => props.onSelect(index)}
             />
         )
     })
@@ -59,6 +62,7 @@ function DocNav(props: DocNavProps) {
                         color="primary"
                         aria-label="add"
                         size="small"
+                        onClick={props.onAddDoc}
                     >
                         <Add />
                     </StyledButton>
