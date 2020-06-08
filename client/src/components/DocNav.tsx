@@ -1,9 +1,10 @@
 import React from 'react'
 import { Typography, Grid, Button, ButtonProps } from '@material-ui/core'
-import { withStyles, Theme, createStyles } from '@material-ui/core/styles'
+import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles'
 import { Description, Add } from '@material-ui/icons'
 import { TreeItem, TreeView } from '@material-ui/lab'
 import { TreeItemProps } from '@material-ui/lab/TreeItem'
+import { border } from '@material-ui/system'
 
 const StyledTreeItem = withStyles((theme: Theme) =>
     createStyles({
@@ -26,6 +27,19 @@ const StyledButton = withStyles((theme: Theme) =>
     }),
 )((props: ButtonProps) => <Button {...props} />)
 
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            marginBottom: theme.spacing(4)
+        },
+        treeView: {
+            marginRight: theme.spacing(5),
+            paddingBottom: theme.spacing(1),
+            borderBottom: '0.5px solid #aaaaaa'
+        }
+    }),
+)
+
 interface DocNavProps {
     titles: String[];
     onSelect(index: number): void;
@@ -33,6 +47,8 @@ interface DocNavProps {
 }
 
 function DocNav(props: DocNavProps) {
+    const classes = useStyles()
+
     const documents = props.titles.map((title, index) => {
         return (
             <StyledTreeItem
@@ -46,8 +62,11 @@ function DocNav(props: DocNavProps) {
     })
 
     return (
-        <Grid item container sm={3}
+        <Grid
+            item container
+            sm={3}
             direction="column"
+            className={classes.root}
         >
             <Grid
                 item container
@@ -69,7 +88,7 @@ function DocNav(props: DocNavProps) {
                 </Grid>
             </Grid>
             <Grid item>
-                <TreeView>
+                <TreeView className={classes.treeView}>
                     {documents}
                 </TreeView>
             </Grid>
