@@ -63,9 +63,9 @@ function DocView() {
         <Grid
             container
             item
-            spacing={2}
             direction="column"
             sm={9}
+            alignItems="stretch"
         >
             <Grid item >
                 <TextareaAutosize

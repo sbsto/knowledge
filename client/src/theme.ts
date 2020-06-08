@@ -5,8 +5,8 @@ const fontFamily = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Ox
 export default createMuiTheme({
     palette: {
         primary: {
-            main: "#333333"
-
+            main: "#333333",
+            contrastText: "#f5f5f5"
         },
         text: {
             primary: "#333333"
@@ -17,11 +17,24 @@ export default createMuiTheme({
     },
     typography: {
         fontFamily,
-        fontSize: 24,
+        fontSize: 18,
         h1: {
             fontFamily,
             fontWeight: 600,
             fontSize: 64
+        },
+        h2: {
+            fontFamily,
+            fontWeight: 400,
+            fontSize: 30
+        },
+        button: {
+            fontFamily,
+            textTransform: 'none',
+            fontWeight: 400
         }
+    },
+    shape: {
+        borderRadius: 4
     }
 })

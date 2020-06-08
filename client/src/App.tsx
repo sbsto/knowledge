@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Grid, Typography } from '@material-ui/core'
-import { DocView, DocNav } from './components/'
+import { Container, Typography } from '@material-ui/core'
+import { DocControl } from './components/'
 
 function App() {
   return (
@@ -10,14 +10,7 @@ function App() {
           could look really nice here.
       */}
       <Typography variant="h1">home</Typography>
-      <Grid container spacing={6}>
-        {/* here, we'll have 2 components: 
-          one for navigation between docs (left)
-          one for viewing the doc and editing it.
-         */}
-        <DocNav />
-        <DocView />
-      </Grid>
+      <DocControl />
     </Container>
   );
 }
