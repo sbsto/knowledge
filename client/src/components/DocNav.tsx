@@ -10,7 +10,6 @@ const StyledTreeItem = withStyles((theme: Theme) =>
         root: {
             marginTop: theme.spacing(1),
             marginRight: theme.spacing(5),
-            // borderBottom: "0.5px solid #aaaaaa"
         },
     }),
 )((props: TreeItemProps) => <TreeItem {...props} />)
@@ -32,13 +31,11 @@ interface DocNavProps {
 }
 
 function DocNav(props: DocNavProps) {
-
     const documents = props.titles.map((title, index) => {
-        const id = String(index)
         return (
             <StyledTreeItem
                 key={index}
-                nodeId={id}
+                nodeId={String(index)}
                 label={title}
                 icon={<Description />}
             />
@@ -62,7 +59,6 @@ function DocNav(props: DocNavProps) {
                         color="primary"
                         aria-label="add"
                         size="small"
-                    // className={classes.root}
                     >
                         <Add />
                     </StyledButton>
