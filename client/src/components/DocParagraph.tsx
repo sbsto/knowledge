@@ -31,7 +31,7 @@ function DocParagraph(props: DocParagraphProps) {
             props.onEnter()
         } else if (event.key === "Backspace" && props.bodyText.length === 0) {
             event.preventDefault()
-            props.deleteParagraph()
+            props.onBackspace()
         }
     }
 
