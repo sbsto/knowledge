@@ -1,5 +1,6 @@
 import express = require('express')
 import cors = require('cors')
+import path = require('path')
 import docRouter from './routers/doc'
 import userRouter from './routers/user'
 import './db/mongoose'
@@ -24,10 +25,10 @@ export class Server {
         })
 
         if (process.env.NODE_ENV === 'production') {
-            this.app.use(express.static("./build/client/build"))
+            this.app.use(express.static(path.join(__dirname, "../client/build")))
 
             this.app.get(/.*/, (req: Request, res: Response): void => {
-                res.sendFile("./build/client/build/index.html")
+                res.sendFile(path.join(__dirname, "../client/build/index.html"))
             })
         }
 
