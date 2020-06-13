@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { CreateAccount } from '.'
@@ -14,6 +14,23 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function Home() {
     const styles = useStyles()
+
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: ''
+    })
+
+    const updateUsername = (value: string) => {
+        const newCredentials = { ...credentials }
+        newCredentials.username = value
+        setCredentials({ ...newCredentials })
+    }
+
+    const updatePassword = (value: string) => {
+        const newCredentials = { ...credentials }
+        newCredentials.password = value
+        setCredentials({ ...newCredentials })
+    }
 
     return (
         <Grid
@@ -39,8 +56,10 @@ function Home() {
                 >
                     <Grid item xs={5}>
                         <TextField
-                            label="email"
+                            label="username"
                             size="small"
+                            value={credentials.username}
+                            onChange={(event) => updateUsername(event.target.value)}
                         />
                     </Grid>
                     <Grid item xs={5}>
@@ -49,6 +68,8 @@ function Home() {
                             type="password"
                             autoComplete="current-password"
                             size="small"
+                            value={credentials.password}
+                            onChange={(event) => updatePassword(event.target.value)}
                         />
                     </Grid>
                     <Grid item xs={2}>

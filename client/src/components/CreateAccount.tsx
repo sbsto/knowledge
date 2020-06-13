@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button } from '@material-ui/core'
 
 function CreateAccount() {
+    const [signupCredentials, setSignupCredentials] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const updateUsername = (value: string) => {
+        const newSignupCredentials = { ...signupCredentials }
+        newSignupCredentials.username = value
+        setSignupCredentials({ ...newSignupCredentials })
+    }
+
+    const updateEmail = (value: string) => {
+        const newSignupCredentials = { ...signupCredentials }
+        newSignupCredentials.username = value
+        setSignupCredentials({ ...newSignupCredentials })
+    }
+
+    const updatePassword = (value: string) => {
+        const newSignupCredentials = { ...signupCredentials }
+        newSignupCredentials.password = value
+        setSignupCredentials({ ...newSignupCredentials })
+    }
+
     return (
         <Grid item container
             direction="column"
@@ -16,6 +40,7 @@ function CreateAccount() {
                     label="username"
                     size="small"
                     fullWidth={true}
+                    onChange={(event) => updateUsername(event.target.value)}
                 />
             </Grid>
             <Grid item>
@@ -24,6 +49,7 @@ function CreateAccount() {
                     label="email"
                     size="small"
                     fullWidth={true}
+                    onChange={(event) => updateEmail(event.target.value)}
                 />
             </Grid>
             <Grid item>
@@ -34,6 +60,7 @@ function CreateAccount() {
                     autoComplete="current-password"
                     size="small"
                     fullWidth={true}
+                    onChange={(event) => updatePassword(event.target.value)}
                 />
             </Grid>
             <Grid item>
