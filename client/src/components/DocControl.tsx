@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { DocNav, Document } from './'
 
 interface Doc {
@@ -54,20 +54,24 @@ function DocControl() {
 
     return (
         <Grid container>
-            <DocNav
-                titles={documents.map((doc) => doc.title)}
-                onSelect={setSelectedDocIndex}
-                onAddDoc={addDoc}
-            />
-            <Document
-                title={documents[selectedDocIndex].title}
-                body={documents[selectedDocIndex].body}
-                onBodyChange={updateParagraph}
-                onTitleChange={updateTitle}
-                onEnter={createNewParagraph}
-                onBackspace={deleteParagraph}
-            />
+            <Typography variant="h1">home</Typography>
+            <Grid item container>
+                <DocNav
+                    titles={documents.map((doc) => doc.title)}
+                    onSelect={setSelectedDocIndex}
+                    onAddDoc={addDoc}
+                />
+                <Document
+                    title={documents[selectedDocIndex].title}
+                    body={documents[selectedDocIndex].body}
+                    onBodyChange={updateParagraph}
+                    onTitleChange={updateTitle}
+                    onEnter={createNewParagraph}
+                    onBackspace={deleteParagraph}
+                />
+            </Grid>
         </Grid>
+
     )
 }
 

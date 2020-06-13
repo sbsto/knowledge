@@ -20,18 +20,6 @@ function Home() {
         password: ''
     })
 
-    const updateUsername = (value: string) => {
-        const newCredentials = { ...credentials }
-        newCredentials.username = value
-        setCredentials({ ...newCredentials })
-    }
-
-    const updatePassword = (value: string) => {
-        const newCredentials = { ...credentials }
-        newCredentials.password = value
-        setCredentials({ ...newCredentials })
-    }
-
     return (
         <Grid
             container
@@ -59,7 +47,11 @@ function Home() {
                             label="username"
                             size="small"
                             value={credentials.username}
-                            onChange={(event) => updateUsername(event.target.value)}
+                            onChange={(event) => {
+                                setCredentials({
+                                    ...credentials, username: event.target.value
+                                })
+                            }}
                         />
                     </Grid>
                     <Grid item xs={5}>
@@ -69,7 +61,11 @@ function Home() {
                             autoComplete="current-password"
                             size="small"
                             value={credentials.password}
-                            onChange={(event) => updatePassword(event.target.value)}
+                            onChange={(event) => {
+                                setCredentials({
+                                    ...credentials, password: event.target.value
+                                })
+                            }}
                         />
                     </Grid>
                     <Grid item xs={2}>

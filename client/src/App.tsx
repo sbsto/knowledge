@@ -19,7 +19,6 @@ function App() {
       <Router>
         <Switch>
           <Route path='/document'>
-            <Typography variant="h1">home</Typography>
             <DocControl />
           </Route>
           <Route path="/">

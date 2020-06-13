@@ -8,24 +8,6 @@ function CreateAccount() {
         password: ''
     })
 
-    const updateUsername = (value: string) => {
-        const newSignupCredentials = { ...signupCredentials }
-        newSignupCredentials.username = value
-        setSignupCredentials({ ...newSignupCredentials })
-    }
-
-    const updateEmail = (value: string) => {
-        const newSignupCredentials = { ...signupCredentials }
-        newSignupCredentials.username = value
-        setSignupCredentials({ ...newSignupCredentials })
-    }
-
-    const updatePassword = (value: string) => {
-        const newSignupCredentials = { ...signupCredentials }
-        newSignupCredentials.password = value
-        setSignupCredentials({ ...newSignupCredentials })
-    }
-
     return (
         <Grid item container
             direction="column"
@@ -40,7 +22,11 @@ function CreateAccount() {
                     label="username"
                     size="small"
                     fullWidth={true}
-                    onChange={(event) => updateUsername(event.target.value)}
+                    onChange={(event) => {
+                        setSignupCredentials({
+                            ...signupCredentials, username: event.target.value
+                        })
+                    }}
                 />
             </Grid>
             <Grid item>
@@ -49,7 +35,11 @@ function CreateAccount() {
                     label="email"
                     size="small"
                     fullWidth={true}
-                    onChange={(event) => updateEmail(event.target.value)}
+                    onChange={(event) => {
+                        setSignupCredentials({
+                            ...signupCredentials, email: event.target.value
+                        })
+                    }}
                 />
             </Grid>
             <Grid item>
@@ -60,7 +50,11 @@ function CreateAccount() {
                     autoComplete="current-password"
                     size="small"
                     fullWidth={true}
-                    onChange={(event) => updatePassword(event.target.value)}
+                    onChange={(event) => {
+                        setSignupCredentials({
+                            ...signupCredentials, password: event.target.value
+                        })
+                    }}
                 />
             </Grid>
             <Grid item>
