@@ -4,7 +4,6 @@ import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/s
 import { Description, Add } from '@material-ui/icons'
 import { TreeItem, TreeView } from '@material-ui/lab'
 import { TreeItemProps } from '@material-ui/lab/TreeItem'
-import { border } from '@material-ui/system'
 
 const StyledTreeItem = withStyles((theme: Theme) =>
     createStyles({
