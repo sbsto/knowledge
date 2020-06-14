@@ -26,6 +26,12 @@ const docSchema = new mongoose.Schema({
     timestamps: true
 })
 
+docSchema.virtual('paragraphs', {
+    ref: 'Paragraph',
+    localField: '_id',
+    foreignField: 'documentId'
+})
+
 const Doc = mongoose.model<IDoc>('Doc', docSchema)
 
 export default Doc

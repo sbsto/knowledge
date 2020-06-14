@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
 
 export interface IParagraph extends mongoose.Document {
-    document: mongoose.Schema.Types.ObjectId;
+    documentId: mongoose.Schema.Types.ObjectId;
     body: string;
-    order: number;
+    positionInDoc: number;
 };
 
 const paraSchema = new mongoose.Schema({
-    document: {
+    documentId: {
         type: mongoose.Types.ObjectId,
         required: true,
         ref: 'Doc',
     },
-    order: {
+    positionInDoc: {
         type: Number,
         required: true,
     },
