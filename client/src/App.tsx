@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Container, Typography } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import { DocControl, Home } from './components/'
 
