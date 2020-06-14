@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         headerContainer: {
             paddingBottom: theme.spacing(2),
+            marginBottom: theme.spacing(2),
             borderBottom: '0.5px #aaaaaa solid'
         }
     })
@@ -84,9 +85,11 @@ function Home() {
                     convention over configuration in documentation.
                 </Typography>
             </Grid>
+            <Grid item md={1}></Grid>
             <Grid container item md={4}>
                 <CreateAccount />
             </Grid>
+            <Grid item md={1}></Grid>
         </Grid>
     )
 }

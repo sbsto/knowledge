@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
 import { Grid, Typography } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { DocNav, Document } from './'
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    headerStyle: {
+        paddingBottom: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        borderBottom: "0.5px #aaaaaa solid"
+    }
+}))
 
 interface Doc {
     title: string;
@@ -21,6 +30,8 @@ function DocControl() {
     )
 
     const [selectedDocIndex, setSelectedDocIndex] = useState(0)
+
+    const styles = useStyles()
 
     const addDoc = () => {
         const updatedSelectedDocIndex = documents.length
@@ -53,8 +64,18 @@ function DocControl() {
     }
 
     return (
-        <Grid container>
-            <Typography variant="h1">home</Typography>
+        <Grid
+            container
+            spacing={3}
+        >
+            <Grid item
+                xs={12}
+                className={styles.headerStyle}
+            >
+                <Typography variant="h1">
+                    home
+                </Typography>
+            </Grid>
             <Grid item container>
                 <DocNav
                     titles={documents.map((doc) => doc.title)}

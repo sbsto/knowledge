@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
         treeView: {
             marginRight: theme.spacing(5),
             paddingBottom: theme.spacing(1),
-            borderBottom: '0.5px solid #aaaaaa'
         }
     }),
 )
