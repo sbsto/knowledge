@@ -65,7 +65,7 @@ router.get('/api/users/me', auth, async (req: Request, res: Response) => {
 router.patch('/api/users/me', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const updates = Object.keys(authReq.body)
-    const validUpdates = ['name', 'email', 'age', 'password']
+    const validUpdates = ['username', 'email', 'age', 'password']
     const isValidOperation = updates.every((update) => validUpdates.includes(update))
 
     if (!isValidOperation) {

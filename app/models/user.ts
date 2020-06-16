@@ -10,7 +10,7 @@ export interface IToken {
 }
 
 interface IUserSchema extends mongoose.Document {
-    name: string;
+    username: string;
     email: string;
     age?: number;
     password: string;
@@ -30,10 +30,17 @@ interface IUserModel extends mongoose.Model<IUser> {
 }
 
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
+        unique: true,
         required: true,
-        trim: true
+        trim: true,
+        validate(value: string) {
+            if (!validator.isAlphanumeric(value)) {
+                throw new Error('Invalid username')
+            }
+            return true
+        }
     },
     email: {
         type: String,
