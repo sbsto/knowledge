@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, Grid, TextField, Button } from '@material-ui/core'
+import { Typography, Grid, TextField, Button, Container } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { CreateAccount } from '.'
 
@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingBottom: theme.spacing(2),
             marginBottom: theme.spacing(2),
             borderBottom: '0.5px #aaaaaa solid'
+        },
+        container: {
+            height: '70%'
         }
     })
 )
@@ -22,11 +25,7 @@ function Home() {
     })
 
     return (
-        <Grid
-            container
-            spacing={3}
-            alignItems="center"
-        >
+        <Container className={styles.container}>
             <Grid item container className={styles.headerContainer}>
                 <Grid item container md={6}>
                     <Grid item>
@@ -80,17 +79,24 @@ function Home() {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item md={6}>
-                <Typography variant="h1">
-                    convention over configuration in documentation.
-                </Typography>
+            <Grid
+                container
+                spacing={3}
+                alignItems="center"
+                className={styles.container}
+            >
+                <Grid item md={6}>
+                    <Typography variant="h1">
+                        convention over configuration in documentation.
+                    </Typography>
+                </Grid>
+                <Grid item md={1}></Grid>
+                <Grid container item md={4}>
+                    <CreateAccount />
+                </Grid>
+                <Grid item md={1}></Grid>
             </Grid>
-            <Grid item md={1}></Grid>
-            <Grid container item md={4}>
-                <CreateAccount />
-            </Grid>
-            <Grid item md={1}></Grid>
-        </Grid>
+        </Container>
     )
 }
 
