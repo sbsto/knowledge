@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button, Container } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import axios from 'axios'
 import { CreateAccount } from '.'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -23,6 +24,14 @@ function Home() {
         username: '',
         password: ''
     })
+
+    const login = async () => {
+        const user = await axios.post('/api/users/login', {
+            username: credentials.username,
+            password: credentials.password
+        })
+        return user
+    }
 
     return (
         <Container className={styles.container}>
@@ -73,6 +82,7 @@ function Home() {
                             variant="contained"
                             color="primary"
                             size="small"
+                            onClick={login}
                         >
                             log in
                         </Button>
