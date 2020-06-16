@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button } from '@material-ui/core'
+import axios from 'axios'
 
 function CreateAccount() {
     const [signupCredentials, setSignupCredentials] = useState({
@@ -7,6 +8,15 @@ function CreateAccount() {
         email: '',
         password: ''
     })
+
+    const signup = async () => {
+        const user = await axios.post('/api/users/create', {
+            username: signupCredentials.username,
+            email: signupCredentials.email,
+            password: signupCredentials.password,
+        })
+        console.log(user)
+    }
 
     return (
         <Grid item container
@@ -63,9 +73,10 @@ function CreateAccount() {
                     color="primary"
                     size="small"
                     fullWidth={true}
+                    onClick={signup}
                 >
                     sign up
-                    </Button>
+                </Button>
             </Grid>
         </Grid>
     )
