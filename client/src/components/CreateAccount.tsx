@@ -15,7 +15,7 @@ function CreateAccount() {
             email: signupCredentials.email,
             password: signupCredentials.password,
         })
-        console.log(user)
+        return user
     }
 
     return (
