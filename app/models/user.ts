@@ -128,18 +128,18 @@ userSchema.methods.getDocs = async function () {
     return user.docs
 }
 
-userSchema.statics.findByCredentials = async (email: string, password: string) => {
+userSchema.statics.findByCredentials = async (username: string, password: string) => {
     const user = await User.findOne({
-        email
+        username
     })
     if (!user) {
-        throw new Error('Unable to login.')
+        throw new Error('No user found.')
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-        throw new Error('Unable to login.')
+        throw new Error('Wrong password.')
     }
     return user
 }
