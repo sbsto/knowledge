@@ -35,7 +35,7 @@ router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
     const authReq = req as AuthRequest
     const _id = authReq.params.id
     try {
-        const doc = await Doc.findOne({
+        const doc: any = await Doc.findOne({
             _id,
             owner: authReq.user._id
         })
@@ -43,7 +43,10 @@ router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
         if (!doc) {
             return res.status(404).send()
         }
-        res.send(doc)
+
+        const docWithTitle = { ...doc._doc, title: await doc.getTitle() }
+
+        res.send(docWithTitle)
     } catch (e) {
         res.status(500).send()
     }
@@ -90,5 +93,6 @@ router.delete('/api/docs/:id', auth, async (req: Request, res: Response) => {
         res.status(500).send()
     }
 })
+
 
 export default router
