@@ -9,13 +9,17 @@ function CreateAccount() {
         password: ''
     })
 
-    const signup = async () => {
-        const user = await axios.post('/api/users/create', {
+    const signup = () => {
+        axios.post('/api/users/create', {
             username: signupCredentials.username,
             email: signupCredentials.email,
             password: signupCredentials.password,
+        }).then((res) => {
+            const token = res.data.token
+            localStorage.setItem('token', token)
+        }).catch(() => {
+            localStorage.removeItem('token')
         })
-        return user
     }
 
     return (

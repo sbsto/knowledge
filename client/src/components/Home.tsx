@@ -25,12 +25,16 @@ function Home() {
         password: ''
     })
 
-    const login = async () => {
-        const user = await axios.post('/api/users/login', {
+    const login = () => {
+        axios.post('/api/users/login', {
             username: credentials.username,
             password: credentials.password
+        }).then((res) => {
+            const token = res.data.token
+            localStorage.setItem('token', token)
+        }).catch(() => {
+            localStorage.removeItem('token')
         })
-        return user
     }
 
     return (
