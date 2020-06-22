@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Grid, TextareaAutosize } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -15,13 +15,25 @@ const useStyles = makeStyles({
 
 interface DocParagraphProps {
     bodyText: string;
+    isSelected: boolean;
     onChange(value: string): void;
     onEnter(): void;
     onBackspace(): void;
+    onSelect(): void;
 }
 
 function DocParagraph(props: DocParagraphProps) {
     const [placeholder, setPlaceholder] = useState('start writing here...')
+
+    const paragraphRef = useRef<HTMLTextAreaElement>(null)
+
+    useEffect(() => {
+        if (paragraphRef.current !== null) {
+            if (props.isSelected) {
+                paragraphRef.current.focus()
+            }
+        }
+    }, [props.isSelected])
 
     const classes = useStyles()
 
@@ -45,6 +57,7 @@ function DocParagraph(props: DocParagraphProps) {
                 onKeyDown={keyPressed}
                 onFocus={() => setPlaceholder('start writing here...')}
                 onBlur={() => setPlaceholder('')}
+                ref={paragraphRef}
                 autoFocus
             />
         </Grid>

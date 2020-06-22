@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
         paddingBottom: theme.spacing(2),
         marginBottom: theme.spacing(2),
         borderBottom: "0.5px #aaaaaa solid"
+    },
+    containerStyle: {
+        height: "100%"
     }
 }))
 
@@ -67,6 +70,7 @@ function DocControl() {
         <Grid
             container
             spacing={3}
+            className={styles.containerStyle}
         >
             <Grid item
                 xs={12}
@@ -76,7 +80,10 @@ function DocControl() {
                     home
                 </Typography>
             </Grid>
-            <Grid item container>
+            <Grid
+                item container
+                className={styles.containerStyle}
+            >
                 <DocNav
                     titles={documents.map((doc) => doc.title)}
                     onSelect={setSelectedDocIndex}

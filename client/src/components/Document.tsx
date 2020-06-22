@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, TextareaAutosize } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { DocParagraph } from './'
@@ -27,6 +27,7 @@ interface DocViewProps {
 
 function DocView(props: DocViewProps) {
     const classes = useStyles()
+    const [selectedParagraph, setSelectedParagraph] = useState(0)
 
     const fullBody = props.body.map((paragraph, index) => {
         return (
@@ -36,6 +37,8 @@ function DocView(props: DocViewProps) {
                 onChange={(value) => props.onBodyChange(value, index)}
                 onEnter={() => props.onEnter(index)}
                 onBackspace={() => props.onBackspace(index)}
+                isSelected={index === selectedParagraph}
+                onSelect={() => setSelectedParagraph(index)}
             />
         )
     })
