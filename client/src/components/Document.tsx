@@ -28,6 +28,13 @@ interface DocViewProps {
 function DocView(props: DocViewProps) {
     const classes = useStyles()
 
+    const titleKeyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault()
+            props.onEnter(-1)
+        }
+    }
+
     const fullBody = props.body.map((paragraph, index) => {
         return (
             <DocParagraph
@@ -54,6 +61,7 @@ function DocView(props: DocViewProps) {
                     placeholder="title"
                     value={props.title}
                     onChange={(event) => props.onTitleChange(event.target.value)}
+                    onKeyDown={titleKeyPressed}
                 />
             </Grid>
             <Grid container item direction="column">
