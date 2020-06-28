@@ -6,6 +6,7 @@ export interface IDoc extends mongoose.Document {
     tags: string[];
     owner: mongoose.Schema.Types.ObjectId;
     getTitle(): string;
+    getParagraphs(): string[];
 };
 
 
@@ -50,6 +51,17 @@ docSchema.methods.getTitle = async function () {
     return doc.docEvents[doc.docEvents.length - 1].data.title
 }
 
+docSchema.methods.getParagraphs = async function () {
+    const doc = this
+    await  doc.populate({
+        path: 'docEvents',
+        match: { type: 'addParagraphEvent' }
+    }).execPopulate()
+
+    const paragraphs = doc.docEvents.map((x: any) => x.data.text)
+
+    return paragraphs
+}
 
 const Doc = mongoose.model<IDoc>('Doc', docSchema)
 

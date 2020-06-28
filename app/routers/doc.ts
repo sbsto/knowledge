@@ -44,9 +44,13 @@ router.get('/api/docs/:id', auth, async (req: Request, res: Response) => {
             return res.status(404).send()
         }
 
-        const docWithTitle = { ...doc._doc, title: await doc.getTitle() }
+        const completeDoc = {
+            ...doc._doc,
+            title: await doc.getTitle(),
+            paragraphs: await doc.getParagraphs()
+        }
 
-        res.send(docWithTitle)
+        res.send(completeDoc)
     } catch (e) {
         res.status(500).send()
     }
