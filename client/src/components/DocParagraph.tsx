@@ -5,11 +5,13 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles({
     paragraphStyle: {
         border: "0px",
-        fontSize: "20px",
+        fontSize: "24px",
+        color: "#333333",
         backgroundColor: "whitesmoke",
         resize: "none",
         outline: "none",
-        width: "100%"
+        width: "100%",
+        textAlign: "justify"
     }
 })
 
@@ -28,7 +30,7 @@ function DocParagraph(props: DocParagraphProps) {
     const paragraphRef = useRef<HTMLTextAreaElement>(null)
 
     useEffect(() => {
-        if (paragraphRef.current !== null) {
+        if (paragraphRef.current) {
             if (props.isSelected) {
                 paragraphRef.current.focus()
             }

@@ -6,13 +6,14 @@ import { DocParagraph } from './'
 const useStyles = makeStyles({
     titleStyle: {
         border: "0px",
-        fontSize: "30px",
+        fontSize: "42px",
         fontWeight: 500,
         color: "#333333",
         backgroundColor: "whitesmoke",
         resize: "none",
         outline: "none",
-        width: "100%"
+        width: "100%",
+        textAlign: "justify"
     }
 })
 
@@ -33,7 +34,7 @@ function DocView(props: DocViewProps) {
         return (
             <DocParagraph
                 key={index}
-                bodyText={props.body[index]}
+                bodyText={paragraph}
                 onChange={(value) => props.onBodyChange(value, index)}
                 onEnter={() => props.onEnter(index)}
                 onBackspace={() => props.onBackspace(index)}
@@ -48,8 +49,9 @@ function DocView(props: DocViewProps) {
             container
             item
             direction="column"
-            sm={9}
+            sm={8}
             alignItems="stretch"
+            spacing={2}
         >
             <Grid item >
                 <TextareaAutosize
@@ -59,7 +61,7 @@ function DocView(props: DocViewProps) {
                     onChange={(event) => props.onTitleChange(event.target.value)}
                 />
             </Grid>
-            <Grid container item direction="column">
+            <Grid container item direction="column" spacing={1}>
                 {fullBody}
             </Grid>
         </Grid>
