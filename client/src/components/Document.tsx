@@ -30,6 +30,18 @@ function DocView(props: DocViewProps) {
     const classes = useStyles()
     const [selectedParagraph, setSelectedParagraph] = useState(0)
 
+    const selectPreviousParagraph = (index: number): void => {
+        if (index) {
+            setSelectedParagraph(index - 1)
+        }
+    }
+
+    const selectNextParagraph = (index: number): void => {
+        if (index !== props.body.length - 1) {
+            setSelectedParagraph(index + 1)
+        }
+    }
+
     const fullBody = props.body.map((paragraph, index) => {
         return (
             <DocParagraph
@@ -39,7 +51,8 @@ function DocView(props: DocViewProps) {
                 onEnter={() => props.onEnter(index)}
                 onBackspace={() => props.onBackspace(index)}
                 isSelected={index === selectedParagraph}
-                onSelect={() => setSelectedParagraph(index)}
+                selectPreviousParagraph={() => selectPreviousParagraph(index)}
+                selectNextParagraph={() => selectNextParagraph(index)}
             />
         )
     })

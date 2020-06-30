@@ -21,7 +21,8 @@ interface DocParagraphProps {
     onChange(value: string): void;
     onEnter(): void;
     onBackspace(): void;
-    onSelect(): void;
+    selectPreviousParagraph(): void;
+    selectNextParagraph(): void;
 }
 
 function DocParagraph(props: DocParagraphProps) {
@@ -40,12 +41,21 @@ function DocParagraph(props: DocParagraphProps) {
     const classes = useStyles()
 
     const keyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        const endSelected = paragraphRef.current!.selectionEnd === props.bodyText.length
+        const startSelected = paragraphRef.current!.selectionEnd === 0
+
         if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault()
             props.onEnter()
         } else if (event.key === "Backspace" && props.bodyText.length === 0) {
             event.preventDefault()
             props.onBackspace()
+        } else if ((event.key === "ArrowUp" || event.key === "ArrowLeft") && startSelected) {
+            event.preventDefault()
+            props.selectPreviousParagraph()
+        } else if ((event.key === "ArrowDown" || event.key === "ArrowRight") && endSelected) {
+            event.preventDefault()
+            props.selectNextParagraph()
         }
     }
 
