@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Grid, TextareaAutosize } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { DocParagraph } from './'
@@ -6,13 +6,14 @@ import { DocParagraph } from './'
 const useStyles = makeStyles({
     titleStyle: {
         border: "0px",
-        fontSize: "30px",
+        fontSize: "42px",
         fontWeight: 500,
         color: "#333333",
         backgroundColor: "whitesmoke",
         resize: "none",
         outline: "none",
-        width: "100%"
+        width: "100%",
+        textAlign: "justify"
     }
 })
 
@@ -27,6 +28,19 @@ interface DocViewProps {
 
 function DocView(props: DocViewProps) {
     const classes = useStyles()
+    const [selectedParagraph, setSelectedParagraph] = useState(0)
+
+    const selectPreviousParagraph = (index: number): void => {
+        if (index) {
+            setSelectedParagraph(index - 1)
+        }
+    }
+
+    const selectNextParagraph = (index: number): void => {
+        if (index !== props.body.length - 1) {
+            setSelectedParagraph(index + 1)
+        }
+    }
 
     const titleKeyPressed = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === "Enter" && !event.shiftKey) {
@@ -39,10 +53,13 @@ function DocView(props: DocViewProps) {
         return (
             <DocParagraph
                 key={index}
-                bodyText={props.body[index]}
+                bodyText={paragraph}
                 onChange={(value) => props.onBodyChange(value, index)}
                 onEnter={() => props.onEnter(index)}
                 onBackspace={() => props.onBackspace(index)}
+                isSelected={index === selectedParagraph}
+                selectPreviousParagraph={() => selectPreviousParagraph(index)}
+                selectNextParagraph={() => selectNextParagraph(index)}
             />
         )
     })
@@ -52,8 +69,9 @@ function DocView(props: DocViewProps) {
             container
             item
             direction="column"
-            sm={9}
+            sm={8}
             alignItems="stretch"
+            spacing={2}
         >
             <Grid item >
                 <TextareaAutosize
@@ -64,7 +82,7 @@ function DocView(props: DocViewProps) {
                     onKeyDown={titleKeyPressed}
                 />
             </Grid>
-            <Grid container item direction="column">
+            <Grid container item direction="column" spacing={1}>
                 {fullBody}
             </Grid>
         </Grid>
