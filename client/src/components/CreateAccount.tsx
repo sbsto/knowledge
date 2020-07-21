@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Typography, Grid, TextField, Button } from '@material-ui/core'
 import axios from 'axios'
 
 function CreateAccount() {
+    const history = useHistory()
+
     const [signupCredentials, setSignupCredentials] = useState({
         username: '',
         email: '',
@@ -28,7 +31,7 @@ function CreateAccount() {
             spacing={2}
         >
             <Grid item>
-                <Typography variant="h2">create an account</Typography>
+                <Typography variant="h2">Create an account.</Typography>
             </Grid>
             <Grid item>
                 <TextField
@@ -79,7 +82,16 @@ function CreateAccount() {
                     fullWidth={true}
                     onClick={signup}
                 >
-                    sign up
+                    Sign up
+                </Button>
+            </Grid>
+            <Grid item>
+                <Button
+                    color="primary"
+                    fullWidth={true}
+                    onClick={() => history.push('/login')}
+                >
+                    Already have an account? Log in.
                 </Button>
             </Grid>
         </Grid>
