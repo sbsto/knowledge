@@ -1,6 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles"
 
-const fontFamily = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif"
+const fontFamilySerif = "Garamond, serif"
+const fontFamilySansSerif = "-apple-system, BlinkMacSystemFont, sans-serif"
 
 export default createMuiTheme({
     palette: {
@@ -16,22 +17,27 @@ export default createMuiTheme({
         }
     },
     typography: {
-        fontFamily,
+        fontFamily: fontFamilySansSerif,
         fontSize: 18,
         h1: {
-            fontFamily,
+            fontFamily: fontFamilySerif,
             fontWeight: 600,
             fontSize: 64
         },
         h2: {
-            fontFamily,
+            fontFamily: fontFamilySerif,
             fontWeight: 400,
-            fontSize: 30
+            fontSize: 40
+        },
+        subtitle1: {
+            fontFamily: fontFamilySerif,
+            fontWeight: 500,
+            fontSize: 24
         },
         button: {
-            fontFamily,
+            fontFamily: fontFamilySansSerif,
             textTransform: 'none',
-            fontWeight: 400
+            fontWeight: 500,
         }
     },
     shape: {

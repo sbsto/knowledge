@@ -43,7 +43,7 @@ function DocControl() {
 
     const addDoc = (): void => {
         const updatedSelectedDocIndex = documents.length
-        setDocuments([...documents, { title: 'new document', body: [''] }])
+        setDocuments([...documents, { title: 'New Document', body: [''] }])
         setSelectedDocIndex(updatedSelectedDocIndex)
     }
 
@@ -82,7 +82,7 @@ function DocControl() {
                 className={styles.headerStyle}
             >
                 <Typography variant="h1">
-                    home
+                    Home
                 </Typography>
             </Grid>
             <Grid

@@ -72,7 +72,7 @@ function DocNav(props: DocNavProps) {
                 alignItems="center"
             >
                 <Grid item>
-                    <Typography variant="h2">documents</Typography>
+                    <Typography variant="h2">Documents</Typography>
                 </Grid>
                 <Grid item>
                     <StyledButton
