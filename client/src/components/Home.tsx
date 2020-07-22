@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid, Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { CreateAccount, HomeHeader } from '.'
+import { CreateAccount, Header } from '.'
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -16,7 +16,7 @@ function Home() {
 
     return (
         <Container className={styles.container}>
-            <HomeHeader />
+            <Header title="Knowledge" subtitle="Changing the way you store information." />
             <Grid
                 container
                 spacing={3}
@@ -30,7 +30,7 @@ function Home() {
                         Docs are broken.
                     </Typography>
                     <Typography
-                        variant="h2"
+                        variant="subtitle1"
                     >
                         Here's why, and how we fixed them.
                     </Typography>

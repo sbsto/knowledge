@@ -31,7 +31,7 @@ function CreateAccount() {
             spacing={2}
         >
             <Grid item>
-                <Typography variant="h2">Create an account.</Typography>
+                <Typography variant="h3">Create an account.</Typography>
             </Grid>
             <Grid item>
                 <TextField

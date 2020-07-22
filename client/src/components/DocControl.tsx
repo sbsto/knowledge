@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { DocNav, Document } from './'
+import { DocNav, Document, Header } from './'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-    headerStyle: {
-        paddingBottom: theme.spacing(2),
-        marginBottom: theme.spacing(2),
-        borderBottom: "0.5px #aaaaaa solid"
-    },
     containerStyle: {
         height: "100%"
     }
@@ -77,23 +72,18 @@ function DocControl() {
             spacing={3}
             className={styles.containerStyle}
         >
-            <Grid item
-                xs={12}
-                className={styles.headerStyle}
-            >
-                <Typography variant="h1">
-                    Home
-                </Typography>
-            </Grid>
+            <Header title="Document" />
             <Grid
-                item container
+                item
+                container
+                justify="center"
                 className={styles.containerStyle}
             >
-                <DocNav
+                {/* <DocNav
                     titles={documents.map((doc) => doc.title)}
                     onSelect={setSelectedDocIndex}
                     onAddDoc={addDoc}
-                />
+                /> */}
                 <Document
                     title={documents[selectedDocIndex].title}
                     body={documents[selectedDocIndex].body}

@@ -26,12 +26,22 @@ export default createMuiTheme({
         },
         h2: {
             fontFamily: fontFamilySerif,
+            fontWeight: 600,
+            fontSize: 48
+        },
+        h3: {
+            fontFamily: fontFamilySerif,
             fontWeight: 400,
             fontSize: 40
         },
         subtitle1: {
-            fontFamily: fontFamilySerif,
-            fontWeight: 500,
+            fontFamily: fontFamilySansSerif,
+            fontWeight: 400,
+            fontSize: 40
+        },
+        subtitle2: {
+            fontFamily: fontFamilySansSerif,
+            fontWeight: 400,
             fontSize: 24
         },
         button: {
