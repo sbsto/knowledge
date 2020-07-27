@@ -8,7 +8,7 @@ interface TitleProps {
 }
 
 function Title(props: TitleProps) {
-    const fontSize = String(38 - 4 * props.degree) + "px"
+    const fontSize = String(38 - 5 * props.degree) + "px"
 
     const useStyles = makeStyles((theme: Theme) => createStyles({
         titleStyle: {
