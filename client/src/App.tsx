@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { DocControl, Home, Login } from './components/'
+import { Home, Login, DocumentView } from './components/'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Switch>
           <Route path='/document'>
-            <DocControl />
+            <DocumentView />
           </Route>
           <Route path='/login'>
             <Login />

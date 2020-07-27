@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button, Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import axios from 'axios'
-import { Header } from '.'
+import { Header } from '..'
 
 const useStyles = makeStyles(() =>
     createStyles({

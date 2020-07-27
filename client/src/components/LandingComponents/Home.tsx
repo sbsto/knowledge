@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Grid, Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { CreateAccount, Header } from '.'
+import { CreateAccount, Header } from '..'
 
 const useStyles = makeStyles(() =>
     createStyles({
