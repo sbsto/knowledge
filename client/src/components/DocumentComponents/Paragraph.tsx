@@ -1,5 +1,5 @@
-import React from 'react'
-import { Grid, TextareaAutosize } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Grid, TextareaAutosize, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
@@ -22,14 +22,32 @@ interface ParagraphProps {
 }
 
 function Paragraph(props: ParagraphProps) {
+    const [showOptions, setShowOptions] = useState(false)
+
     const styles = useStyles()
+
     return (
         <Grid item>
-            <TextareaAutosize
-                className={styles.paragraphStyle}
-                value={props.content}
-                onChange={(event) => event.target.value}
-            />
+            <Grid item>
+                <TextareaAutosize
+                    className={styles.paragraphStyle}
+                    value={props.content}
+                    onChange={(event) => event.target.value}
+                    onMouseEnter={() => setShowOptions(true)}
+                    onMouseLeave={() => setTimeout(() => setShowOptions(false), 2000)}
+                />
+            </Grid>
+            <Grid item >
+                {
+                    showOptions ?
+                        <Button
+                            fullWidth={true}
+                        >
+                            Add new section here
+                        </Button>
+                        : null
+                }
+            </Grid>
         </Grid>
     )
 }

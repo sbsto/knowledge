@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
 import { Grid, Switch, FormControlLabel, IconButton } from '@material-ui/core'
 import { Create, CreateOutlined } from '@material-ui/icons'
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    controlBarStyle: {
+        padding: theme.spacing(2)
+    }
+}))
 
 function ControlBar() {
     const [isEditing, setIsEditing] = useState(false)
+
+    const styles = useStyles()
 
     return (
         <Grid
@@ -11,6 +20,7 @@ function ControlBar() {
             container
             md={12}
             justify="flex-end"
+            className={styles.controlBarStyle}
         >
             <Grid item>
                 <IconButton

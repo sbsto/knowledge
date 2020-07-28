@@ -5,7 +5,7 @@ import { Section } from '..'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     docContainer: {
-        marginTop: theme.spacing(9)
+        marginTop: theme.spacing(6)
     }
 }))
 
