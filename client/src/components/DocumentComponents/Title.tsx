@@ -3,7 +3,7 @@ import { Grid, TextareaAutosize } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 interface TitleProps {
-    content: string;
+    value: string;
     degree: number;
 }
 
@@ -30,7 +30,7 @@ function Title(props: TitleProps) {
 
     return (
         <Grid item>
-            <TextareaAutosize className={styles.titleStyle} value={props.content} />
+            <TextareaAutosize className={styles.titleStyle} value={props.value} />
         </Grid>
     )
 
