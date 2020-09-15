@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Grid } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { Title, Paragraph } from '..'
+import { Title, Paragraph, Heading } from '..'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     docContainer: {
@@ -45,15 +45,38 @@ function Document() {
         }
     )
 
-    const body = content.body.map((block) => {
+    const updateTitle = (value: string): void => {
+        const newContent = content
+        newContent.title = value
+        setContent({ ...newContent })
+    }
+
+    const updateBlock = (value: string, index: number): void => {
+        const newContent = content
+        newContent.body[index].value = value
+        setContent({ ...newContent })
+    }
+
+    const body = content.body.map((block, index) => {
         if (block.type === "heading") {
             return (
-                <Title value={block.value} degree={block.degree!} />
+                <Heading
+                    key={index}
+                    value={block.value}
+                    degree={block.degree!}
+                    onChange={(value) => updateBlock(value, index)}
+                />
             )
         } else if (block.type === "paragraph") {
             return (
-                <Paragraph value={block.value} />
+                <Paragraph
+                    key={index}
+                    value={block.value}
+                    onChange={(value) => updateBlock(value, index)}
+                />
             )
+        } else {
+            return null
         }
     })
 
@@ -61,12 +84,14 @@ function Document() {
         <Grid
             className={styles.docContainer}
             container
-            md={12}
             alignItems="center"
             justify="center"
         >
             <Grid item md={8}>
-                <Title value={content.title} degree={0} />
+                <Title
+                    value={content.title}
+                    onChange={updateTitle}
+                />
                 {body}
             </Grid>
         </Grid>

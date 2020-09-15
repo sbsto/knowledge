@@ -4,15 +4,17 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 interface TitleProps {
     value: string;
+    degree: number;
     onChange: (value: string) => void
 }
 
 function Title(props: TitleProps) {
+    const fontSize = String(38 - 5 * props.degree) + "px"
 
     const useStyles = makeStyles((theme: Theme) => createStyles({
         titleStyle: {
             border: "0px",
-            fontSize: "42px",
+            fontSize,
             fontFamily: "serif",
             fontWeight: 550,
             color: "#333333",

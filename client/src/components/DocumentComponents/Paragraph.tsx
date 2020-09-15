@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 
 interface ParagraphProps {
     value: string;
+    onChange: (value: string) => void
 }
 
 function Paragraph(props: ParagraphProps) {
@@ -30,7 +31,7 @@ function Paragraph(props: ParagraphProps) {
             <TextareaAutosize
                 className={styles.paragraphStyle}
                 value={props.value}
-                onChange={(event) => event.target.value}
+                onChange={(event) => props.onChange(event.target.value)}
             />
         </Grid>
     )
