@@ -12,17 +12,22 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-function HomeHeader() {
+interface HeaderProps {
+    title: string;
+    subtitle?: string;
+}
+
+function HomeHeader(props: HeaderProps) {
     const styles = useStyles()
     return (
         <Grid item container md={12} className={styles.headerContainer}>
             <Grid item container md={6}>
                 <Grid item>
-                    <Typography variant="h1">Knowledge</Typography>
+                    <Typography variant="h2">{props.title}</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography variant="subtitle1">
-                        Changing the way you store information.
+                    <Typography variant="subtitle2">
+                        {props.subtitle}
                     </Typography>
                 </Grid>
             </Grid>

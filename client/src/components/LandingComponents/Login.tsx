@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Typography, Grid, TextField, Button, Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import axios from 'axios'
-import { HomeHeader } from '.'
+import { Header } from '..'
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -34,7 +34,7 @@ function Login() {
 
     return (
         <Container className={styles.container}>
-            <HomeHeader />
+            <Header title="Knowledge" subtitle="Changing the way you store information." />
             <Grid
                 container
                 alignItems="center"
@@ -42,7 +42,7 @@ function Login() {
                 className={styles.container}
             >
                 <Grid item md={6}>
-                    <Typography variant="h2">Thanks for coming back.</Typography>
+                    <Typography variant="h3">Thanks for coming back.</Typography>
                 </Grid>
                 <Grid
                     item
@@ -52,7 +52,7 @@ function Login() {
                     spacing={2}
                 >
                     <Grid item>
-                        <Typography variant="h2">Log in.</Typography>
+                        <Typography variant="h3">Log in.</Typography>
                     </Grid>
                     <Grid item>
                         <TextField
