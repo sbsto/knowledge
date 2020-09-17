@@ -5,7 +5,9 @@ import { Title, Paragraph, Heading } from '..'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     docContainer: {
-        marginTop: theme.spacing(6)
+        marginBottom: theme.spacing(8),
+        paddingBottom: theme.spacing(3),
+        borderBottom: "1px solid #aaaaaa"
     }
 }))
 
@@ -13,7 +15,7 @@ function Document() {
     const styles = useStyles()
     const [content, setContent] = useState(
         {
-            title: "New Document",
+            title: "Murakami Quotes",
             body: [{
                 type: "heading",
                 value: "Introduction",
@@ -82,12 +84,15 @@ function Document() {
 
     return (
         <Grid
-            className={styles.docContainer}
             container
             alignItems="center"
             justify="center"
         >
-            <Grid item md={8}>
+            <Grid
+                className={styles.docContainer}
+                item
+                md={8}
+            >
                 <Title
                     value={content.title}
                     onChange={updateTitle}
