@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, IconButton } from '@material-ui/core'
-import { Create, CreateOutlined } from '@material-ui/icons'
+import { Create, CreateOutlined, ArrowBack } from '@material-ui/icons'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -19,9 +19,16 @@ function ControlBar() {
             item
             container
             md={12}
-            justify="flex-end"
+            justify="space-between"
             className={styles.controlBarStyle}
         >
+            <Grid item>
+                <IconButton
+                    color="primary"
+                >
+                    <ArrowBack />
+                </IconButton>
+            </Grid>
             <Grid item>
                 <IconButton
                     color="primary"
