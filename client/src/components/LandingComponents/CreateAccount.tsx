@@ -20,6 +20,7 @@ function CreateAccount() {
         }).then((res) => {
             const token = res.data.token
             localStorage.setItem('token', token)
+            history.push('/home')
         }).catch(() => {
             localStorage.removeItem('token')
         })

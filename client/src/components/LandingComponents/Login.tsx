@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Typography, Grid, TextField, Button, Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import axios from 'axios'
@@ -13,6 +14,8 @@ const useStyles = makeStyles(() =>
 )
 
 function Login() {
+    const history = useHistory()
+
     const [signupCredentials, setSignupCredentials] = useState({
         username: '',
         password: ''
@@ -27,6 +30,7 @@ function Login() {
         }).then((res) => {
             const token = res.data.token
             localStorage.setItem('token', token)
+            history.push('/home')
         }).catch(() => {
             localStorage.removeItem('token')
         })
