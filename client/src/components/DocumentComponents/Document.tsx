@@ -6,8 +6,7 @@ import { Title, Paragraph, Heading } from '..'
 const useStyles = makeStyles((theme: Theme) => createStyles({
     docContainer: {
         marginBottom: theme.spacing(8),
-        paddingBottom: theme.spacing(3),
-        borderBottom: "1px solid #aaaaaa"
+        paddingBottom: theme.spacing(3)
     }
 }))
 
