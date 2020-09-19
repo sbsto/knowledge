@@ -35,6 +35,11 @@ function Home() {
     const [spaces, setSpaces] = useState(
         [
             {
+                title: "Once Upon a Time in Hollywood",
+                created: "on 01/01/2020",
+                description: "A twist on an infamous murder case."
+            },
+            {
                 title: "West Facing Windows",
                 created: "on 15/09/2020",
                 description: "A story about university and life."
@@ -63,7 +68,7 @@ function Home() {
             <Grid item md={6} className={styles.item} key={index}>
                 <SpaceListItem
                     title={space.title}
-                    createdDate={space.created}
+                    created={space.created}
                     description={space.description}
                 />
             </Grid>

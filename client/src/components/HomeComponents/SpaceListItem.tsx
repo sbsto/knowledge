@@ -4,7 +4,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 interface SpaceListItemProps {
     title: string,
-    createdDate: string,
+    created: string,
     description: string
 }
 
@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(2),
             borderRadius: "12px",
             border: '1px #aaaaaa solid',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            height: '100%'
         }
     })
 )
@@ -33,9 +34,13 @@ function SpaceListItem(props: SpaceListItemProps) {
                 direction="column"
                 spacing={2}
             >
-                <Grid item>
-                    <Typography variant="h4">{props.title}</Typography>
-                    <Typography variant="body2">Created {props.createdDate}</Typography>
+                <Grid container item wrap="nowrap" direction="column">
+                    <Grid item>
+                        <Typography variant="h4" noWrap>{props.title}</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="body2">Created {props.created}</Typography>
+                    </Grid>
                 </Grid>
                 <Grid item>
                     <Typography variant="body1">{props.description}</Typography>
