@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Add } from '@material-ui/icons'
 import { SpaceListItem } from '..'
+import { useHistory } from 'react-router-dom'
 
 interface Space {
     title: string,
@@ -29,8 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
+
 function Home() {
     const styles = useStyles()
+    const history = useHistory()
 
     const [spaces, setSpaces] = useState(
         [
@@ -65,7 +68,13 @@ function Home() {
 
     const spacesList = spaces.map((space: Space, index: number) => {
         return (
-            <Grid item md={6} className={styles.item} key={index}>
+            <Grid
+                item
+                md={6}
+                className={styles.item}
+                key={index}
+                onClick={() => history.push('/documentlist')}
+            >
                 <SpaceListItem
                     title={space.title}
                     created={space.created}

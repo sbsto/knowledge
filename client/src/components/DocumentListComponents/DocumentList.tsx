@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Add } from '@material-ui/icons'
 import { DocumentListItem } from '..'
+import { useHistory } from 'react-router-dom'
 
 interface Document {
     title: string,
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function DocumentList() {
     const styles = useStyles()
+    const history = useHistory()
 
     const [spaceTitle, setSpaceTitle] = useState("Once Upon a Time in Hollywood")
 
@@ -58,7 +60,12 @@ function DocumentList() {
 
     const documentListItems = documents.map((document: Document, index) => {
         return (
-            <Grid item className={styles.item} key={index}>
+            <Grid
+                item
+                className={styles.item}
+                key={index}
+                onClick={() => history.push('/document')}
+            >
                 <DocumentListItem
                     title={document.title}
                     created={document.created}
