@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { Add } from '@material-ui/icons'
+import { Add, ArrowBack } from '@material-ui/icons'
 import { DocumentListItem } from '..'
 import { useHistory } from 'react-router-dom'
 
@@ -113,10 +113,23 @@ function DocumentList() {
                         <Typography variant="subtitle2">{spaceTitle}</Typography>
                     </Grid>
                     <Grid item>
-                        <Button color="primary">
-                            <Add fontSize="small" />
-                            New Document
-                        </Button>
+                        <Grid item container direction="column">
+                            <Grid item>
+                                <Button
+                                    color="primary"
+                                    onClick={() => history.push('/home')}
+                                >
+                                    <ArrowBack fontSize="small" />
+                                    Back to Spaces
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button color="primary">
+                                    <Add fontSize="small" />
+                                    New Document
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
                 {documents.length ? documentListContainer : emptyState}
