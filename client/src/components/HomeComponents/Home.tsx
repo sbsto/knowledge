@@ -66,6 +66,27 @@ function Home() {
         ]
     )
 
+    const header = (
+        <Grid
+            item
+            container
+            className={styles.headerContainer}
+            justify="space-between"
+            alignItems="flex-end"
+        >
+            <Grid item>
+                <Typography variant="h2">Spaces</Typography>
+                <Typography variant="subtitle2">All your work, organised.</Typography>
+            </Grid>
+            <Grid item>
+                <Button color="primary">
+                    <Add fontSize="small" />
+                    New Space
+                </Button>
+            </Grid>
+        </Grid>
+    )
+
     const spacesList = spaces.map((space: Space, index: number) => {
         return (
             <Grid
@@ -114,24 +135,7 @@ function Home() {
             justify="center"
         >
             <Grid item md={8}>
-                <Grid
-                    item
-                    container
-                    className={styles.headerContainer}
-                    justify="space-between"
-                    alignItems="flex-end"
-                >
-                    <Grid item>
-                        <Typography variant="h2">Spaces</Typography>
-                        <Typography variant="subtitle2">All your work, organised.</Typography>
-                    </Grid>
-                    <Grid item>
-                        <Button color="primary">
-                            <Add fontSize="small" />
-                            New Space
-                        </Button>
-                    </Grid>
-                </Grid>
+                {header}
                 {spaces.length ? spacesContainer : emptyState}
             </Grid>
         </Grid>

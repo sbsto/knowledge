@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Add, ArrowBack } from '@material-ui/icons'
-import { DocumentListItem } from '..'
 import { useHistory } from 'react-router-dom'
+import { DocumentListItem } from '..'
 
 interface Document {
     title: string,
@@ -58,6 +58,40 @@ function DocumentList() {
         ]
     )
 
+    const header = (
+        <Grid
+            item
+            container
+            className={styles.headerContainer}
+            justify="space-between"
+            alignItems="flex-end"
+        >
+            <Grid item>
+                <Typography variant="h2">Documents</Typography>
+                <Typography variant="subtitle2">{spaceTitle}</Typography>
+            </Grid>
+            <Grid item>
+                <Grid item container direction="column">
+                    <Grid item>
+                        <Button
+                            color="primary"
+                            onClick={() => history.push('/home')}
+                        >
+                            <ArrowBack fontSize="small" />
+                            Back to Spaces
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                        <Button color="primary">
+                            <Add fontSize="small" />
+                            New Document
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    )
+
     const documentListItems = documents.map((document: Document, index) => {
         return (
             <Grid
@@ -75,11 +109,7 @@ function DocumentList() {
     })
 
     const documentListContainer = (
-        <Grid
-            item container
-        >
-            {documentListItems}
-        </Grid>
+        <Grid item container>{documentListItems}</Grid>
     )
 
     const emptyState = (
@@ -100,37 +130,7 @@ function DocumentList() {
             justify="center"
         >
             <Grid item md={8}>
-                <Grid
-                    item
-                    container
-                    className={styles.headerContainer}
-                    justify="space-between"
-                    alignItems="flex-end"
-                >
-                    <Grid item>
-                        <Typography variant="h2">Documents</Typography>
-                        <Typography variant="subtitle2">{spaceTitle}</Typography>
-                    </Grid>
-                    <Grid item>
-                        <Grid item container direction="column">
-                            <Grid item>
-                                <Button
-                                    color="primary"
-                                    onClick={() => history.push('/home')}
-                                >
-                                    <ArrowBack fontSize="small" />
-                                    Back to Spaces
-                                </Button>
-                            </Grid>
-                            <Grid item>
-                                <Button color="primary">
-                                    <Add fontSize="small" />
-                                    New Document
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                {header}
                 {documents.length ? documentListContainer : emptyState}
             </Grid>
         </Grid>
