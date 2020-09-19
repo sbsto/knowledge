@@ -64,7 +64,6 @@ function DocumentList() {
                 item
                 className={styles.item}
                 key={index}
-                onClick={() => history.push('/document')}
             >
                 <DocumentListItem
                     title={document.title}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Typography } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,6 +23,7 @@ interface DocumentListItemProps {
 
 function DocumentListItem(props: DocumentListItemProps) {
     const styles = useStyles()
+    const history = useHistory()
 
     return (
         <Grid
@@ -38,7 +40,13 @@ function DocumentListItem(props: DocumentListItemProps) {
                 md={6}
             >
                 <Grid item>
-                    <Typography variant="h4" className={styles.title}>{props.title}</Typography>
+                    <Typography
+                        variant="h4"
+                        className={styles.title}
+                        onClick={() => history.push('/document')}
+                    >
+                        {props.title}
+                    </Typography>
                 </Grid>
                 <Grid item>
                     <Typography variant="body2">Created {props.created}</Typography>
