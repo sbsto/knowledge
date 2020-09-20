@@ -11,7 +11,7 @@ const useStyles = makeStyles(() =>
     })
 )
 
-function Home() {
+function Landing() {
     const styles = useStyles()
 
     return (
@@ -44,4 +44,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Landing

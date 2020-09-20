@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Grid, IconButton } from '@material-ui/core'
 import { Create, CreateOutlined, ArrowBack } from '@material-ui/icons'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     controlBarStyle: {
@@ -10,9 +11,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }))
 
 function ControlBar() {
-    const [isEditing, setIsEditing] = useState(false)
-
     const styles = useStyles()
+    const history = useHistory()
+
+    const [isEditing, setIsEditing] = useState(false)
 
     return (
         <Grid
@@ -25,6 +27,7 @@ function ControlBar() {
             <Grid item>
                 <IconButton
                     color="primary"
+                    onClick={() => history.push('/documentlist')}
                 >
                     <ArrowBack />
                 </IconButton>

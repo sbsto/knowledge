@@ -38,6 +38,11 @@ export default createMuiTheme({
             fontWeight: 400,
             fontSize: 40
         },
+        h4: {
+            fontFamily: fontFamilySerif,
+            fontWeight: 400,
+            fontSize: 32
+        },
         subtitle1: {
             fontFamily: fontFamilySansSerif,
             fontWeight: 400,
@@ -47,6 +52,16 @@ export default createMuiTheme({
             fontFamily: fontFamilySansSerif,
             fontWeight: 400,
             fontSize: 24
+        },
+        body1: {
+            fontFamily: fontFamilySansSerif,
+            fontWeight: 400,
+            fontSize: 18
+        },
+        body2: {
+            fontFamily: fontFamilySansSerif,
+            fontWeight: 400,
+            fontSize: 16
         },
         button: {
             fontFamily: fontFamilySansSerif,
