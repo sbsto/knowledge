@@ -2,13 +2,13 @@ import React from 'react'
 import { Grid, TextareaAutosize } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
-interface TitleProps {
+interface HeadingProps {
     value: string;
     degree: number;
     onChange: (value: string) => void
 }
 
-function Title(props: TitleProps) {
+function Heading(props: HeadingProps) {
     const fontSize = String(38 - 5 * props.degree) + "px"
 
     const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -41,4 +41,4 @@ function Title(props: TitleProps) {
 
 }
 
-export default Title
+export default Heading

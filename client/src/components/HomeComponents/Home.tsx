@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { Add } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
-import { SpaceListItem, HomeControlBar } from '..'
+import { SpaceListItem, HomeControlBar, Header } from '..'
 
 interface Space {
     title: string,
@@ -66,21 +65,6 @@ function Home() {
         ]
     )
 
-    const header = (
-        <Grid
-            item
-            container
-            className={styles.headerContainer}
-            justify="space-between"
-            alignItems="flex-end"
-        >
-            <Grid item>
-                <Typography variant="h2">Spaces</Typography>
-                <Typography variant="subtitle2">All your work, organised.</Typography>
-            </Grid>
-        </Grid>
-    )
-
     const spacesList = spaces.map((space: Space, index: number) => {
         return (
             <Grid
@@ -129,7 +113,8 @@ function Home() {
         >
             <HomeControlBar />
             <Grid item md={8}>
-                {header}
+                <Header title="Spaces" subtitle="All your work, organised." />
+
                 {spaces.length ? spacesContainer : emptyState}
             </Grid>
         </Grid>

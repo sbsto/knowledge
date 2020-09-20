@@ -3,7 +3,7 @@ import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Add, ArrowBack } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
-import { DocumentListItem, DocumentListControlBar } from '..'
+import { DocumentListItem, DocumentListControlBar, Header } from '..'
 
 interface Document {
     title: string,
@@ -64,21 +64,6 @@ function DocumentList() {
         ]
     )
 
-    const header = (
-        <Grid
-            item
-            container
-            className={styles.headerContainer}
-            justify="space-between"
-            alignItems="flex-end"
-        >
-            <Grid item>
-                <Typography variant="h2">{space.title}</Typography>
-                <Typography variant="subtitle2">{space.description}</Typography>
-            </Grid>
-        </Grid>
-    )
-
     const documentListItems = documents.map((document: Document, index) => {
         return (
             <Grid
@@ -117,7 +102,7 @@ function DocumentList() {
         >
             <DocumentListControlBar />
             <Grid item md={8}>
-                {header}
+                <Header title={space.title} subtitle={space.description} />
                 {documents.length ? documentListContainer : emptyState}
             </Grid>
         </Grid>
