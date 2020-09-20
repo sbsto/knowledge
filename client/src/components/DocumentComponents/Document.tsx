@@ -15,7 +15,7 @@ function Document() {
     const [content, setContent] = useState(
         {
             title: "Outline",
-            description: "A twist on an infamous murder case.",
+            description: "A rough overview of the plot.",
             body: [{
                 type: "heading",
                 value: "Introduction",
