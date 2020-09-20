@@ -6,7 +6,8 @@ import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     controlBarStyle: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        minHeight: "90px"
     }
 }))
 
@@ -22,6 +23,7 @@ function ControlBar() {
             container
             md={12}
             justify="space-between"
+            alignItems="center"
             className={styles.controlBarStyle}
         >
             <Grid item>
