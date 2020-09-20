@@ -28,7 +28,7 @@ function DocumentListControlBar() {
             <Grid item>
                 <IconButton
                     color="primary"
-                    onClick={() => history.push('/home')}
+                    onClick={() => history.push('/spaces')}
                 >
                     <ArrowBack />
                 </IconButton>

@@ -23,7 +23,8 @@ function Title(props: TitleProps) {
             outline: "none",
             width: "100%",
             textAlign: "justify",
-            padding: "0px"
+            padding: "0px",
+            margin: "0px"
         },
         description: {
             border: "0px",
@@ -36,7 +37,8 @@ function Title(props: TitleProps) {
             outline: "none",
             width: "100%",
             textAlign: "justify",
-            padding: "0px"
+            padding: "0px",
+            margin: "0px"
         },
         container: {
             paddingBottom: theme.spacing(2),

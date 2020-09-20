@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
-import { SpaceListItem, HomeControlBar, Header } from '..'
+import { SpaceListItem, SpaceControlBar, Header } from '..'
 
 interface Space {
     title: string,
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 
-function Home() {
+function Spaces() {
     const styles = useStyles()
     const history = useHistory()
 
@@ -111,7 +111,7 @@ function Home() {
             container
             justify="center"
         >
-            <HomeControlBar />
+            <SpaceControlBar />
             <Grid item md={8}>
                 <Header title="Spaces" subtitle="All your work, organised." />
 
@@ -121,4 +121,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Spaces

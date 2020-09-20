@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Container } from '@material-ui/core'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
-import { Landing, Login, DocumentView, Home, DocumentList } from './components/'
+import { Landing, Login, DocumentView, Spaces, DocumentList } from './components/'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -24,8 +24,8 @@ function App() {
           <Route path='/documentlist'>
             <DocumentList />
           </Route>
-          <Route path='/home'>
-            <Home />
+          <Route path='/spaces'>
+            <Spaces />
           </Route>
           <Route path='/login'>
             <Login />
