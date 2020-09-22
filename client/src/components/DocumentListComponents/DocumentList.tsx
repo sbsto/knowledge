@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { Grid, Typography, Button } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { Add, ArrowBack } from '@material-ui/icons'
-import { useHistory } from 'react-router-dom'
 import { DocumentListItem, DocumentListControlBar, Header } from '..'
 
 interface Document {
@@ -32,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function DocumentList() {
     const styles = useStyles()
-    const history = useHistory()
 
     const [space, setSpace] = useState({
         title: "Once Upon a Time in Hollywood",

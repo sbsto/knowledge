@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Typography, Button } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 import { SpaceListItem, SpaceControlBar, Header } from '..'
