@@ -1,12 +1,12 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
-import { Document, ControlBar } from '..'
+import { Document, DocumentControlBar } from '..'
 
 function DocumentView() {
     return (
         <Grid container direction="column">
             <Grid item>
-                <ControlBar />
+                <DocumentControlBar />
             </Grid>
             <Grid item>
                 <Document />

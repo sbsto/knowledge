@@ -14,7 +14,8 @@ function Document() {
     const styles = useStyles()
     const [content, setContent] = useState(
         {
-            title: "Murakami Quotes",
+            title: "Outline",
+            description: "A rough overview of the plot.",
             body: [{
                 type: "heading",
                 value: "Introduction",
@@ -47,9 +48,11 @@ function Document() {
     )
 
     const updateTitle = (value: string): void => {
-        const newContent = content
-        newContent.title = value
-        setContent({ ...newContent })
+        setContent({ ...content, title: value })
+    }
+
+    const updateDescription = (value: string): void => {
+        setContent({ ...content, description: value })
     }
 
     const updateBlock = (value: string, index: number): void => {
@@ -93,8 +96,10 @@ function Document() {
                 md={8}
             >
                 <Title
-                    value={content.title}
-                    onChange={updateTitle}
+                    title={content.title}
+                    description={content.description}
+                    onTitleChange={updateTitle}
+                    onDescriptionChange={updateDescription}
                 />
                 {body}
             </Grid>

@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         headerContainer: {
             paddingBottom: theme.spacing(2),
-            marginBottom: theme.spacing(2),
-            borderBottom: '0.5px #aaaaaa solid'
+            borderBottom: '0.5px #aaaaaa solid',
+            minHeight: "115px"
         }
     })
 )
@@ -20,17 +20,13 @@ interface HeaderProps {
 function HomeHeader(props: HeaderProps) {
     const styles = useStyles()
     return (
-        <Grid item container md={12} className={styles.headerContainer}>
-            <Grid item container md={6}>
-                <Grid item>
-                    <Typography variant="h2">{props.title}</Typography>
-                </Grid>
-                <Grid item>
-                    <Typography variant="subtitle2">
-                        {props.subtitle}
-                    </Typography>
-                </Grid>
-            </Grid>
+        <Grid
+            item container
+            className={styles.headerContainer}
+            direction="column"
+        >
+            <Typography variant="h2">{props.title}</Typography>
+            <Typography variant="subtitle2">{props.subtitle}</Typography>
         </Grid>
     )
 }

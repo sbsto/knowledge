@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import { Add } from '@material-ui/icons'
-import { SpaceListItem } from '..'
 import { useHistory } from 'react-router-dom'
+import { SpaceListItem, SpaceControlBar, Header } from '..'
 
 interface Space {
     title: string,
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 
-function Home() {
+function Spaces() {
     const styles = useStyles()
     const history = useHistory()
 
@@ -64,27 +63,6 @@ function Home() {
             }
 
         ]
-    )
-
-    const header = (
-        <Grid
-            item
-            container
-            className={styles.headerContainer}
-            justify="space-between"
-            alignItems="flex-end"
-        >
-            <Grid item>
-                <Typography variant="h2">Spaces</Typography>
-                <Typography variant="subtitle2">All your work, organised.</Typography>
-            </Grid>
-            <Grid item>
-                <Button color="primary">
-                    <Add fontSize="small" />
-                    New Space
-                </Button>
-            </Grid>
-        </Grid>
     )
 
     const spacesList = spaces.map((space: Space, index: number) => {
@@ -131,15 +109,16 @@ function Home() {
     return (
         <Grid
             container
-            alignItems="center"
             justify="center"
         >
+            <SpaceControlBar />
             <Grid item md={8}>
-                {header}
+                <Header title="Spaces" subtitle="All your work, organised." />
+
                 {spaces.length ? spacesContainer : emptyState}
             </Grid>
         </Grid>
     )
 }
 
-export default Home
+export default Spaces

@@ -3,7 +3,7 @@ import { Grid, Typography, Button } from '@material-ui/core'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { Add, ArrowBack } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
-import { DocumentListItem } from '..'
+import { DocumentListItem, DocumentListControlBar, Header } from '..'
 
 interface Document {
     title: string,
@@ -13,6 +13,9 @@ interface Document {
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        contentContainer: {
+            marginTop: theme.spacing(2)
+        },
         headerContainer: {
             paddingBottom: theme.spacing(2),
             borderBottom: '1px #aaaaaa solid'
@@ -31,7 +34,10 @@ function DocumentList() {
     const styles = useStyles()
     const history = useHistory()
 
-    const [spaceTitle, setSpaceTitle] = useState("Once Upon a Time in Hollywood")
+    const [space, setSpace] = useState({
+        title: "Once Upon a Time in Hollywood",
+        description: "A twist on an infamous murder case."
+    })
 
     const [documents, setDocuments] = useState(
         [
@@ -56,40 +62,6 @@ function DocumentList() {
                 description: "Character descriptions."
             }
         ]
-    )
-
-    const header = (
-        <Grid
-            item
-            container
-            className={styles.headerContainer}
-            justify="space-between"
-            alignItems="flex-end"
-        >
-            <Grid item>
-                <Typography variant="h2">Documents</Typography>
-                <Typography variant="subtitle2">{spaceTitle}</Typography>
-            </Grid>
-            <Grid item>
-                <Grid item container direction="column">
-                    <Grid item>
-                        <Button
-                            color="primary"
-                            onClick={() => history.push('/home')}
-                        >
-                            <ArrowBack fontSize="small" />
-                            Back to Spaces
-                        </Button>
-                    </Grid>
-                    <Grid item>
-                        <Button color="primary">
-                            <Add fontSize="small" />
-                            New Document
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
     )
 
     const documentListItems = documents.map((document: Document, index) => {
@@ -126,11 +98,11 @@ function DocumentList() {
     return (
         <Grid
             container
-            alignItems="center"
             justify="center"
         >
+            <DocumentListControlBar />
             <Grid item md={8}>
-                {header}
+                <Header title={space.title} subtitle={space.description} />
                 {documents.length ? documentListContainer : emptyState}
             </Grid>
         </Grid>
