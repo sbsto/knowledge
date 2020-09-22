@@ -48,15 +48,11 @@ function Document() {
     )
 
     const updateTitle = (value: string): void => {
-        const newContent = content
-        newContent.title = value
-        setContent({ ...newContent })
+        setContent({ ...content, title: value })
     }
 
     const updateDescription = (value: string): void => {
-        const newContent = content
-        newContent.description = value
-        setContent({ ...newContent })
+        setContent({ ...content, description: value })
     }
 
     const updateBlock = (value: string, index: number): void => {
